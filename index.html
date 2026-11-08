@@ -1,0 +1,238 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>词面覆盖台</title><style>
+:root{font:16px system-ui,-apple-system,"PingFang SC",sans-serif;color:#22344e;background:#eef3f8}*{box-sizing:border-box}body{margin:0}header,main,footer{max-width:1200px;margin:auto;padding:30px}header{padding-top:44px}h1{font-size:43px;margin:10px 0;letter-spacing:-1px}header p{color:#5a6d84;max-width:830px;line-height:1.8}.eyebrow{font-size:12px;letter-spacing:2px;color:#4f6b91;font-weight:700}main{padding-top:0;display:grid;grid-template-columns:420px minmax(0,1fr);gap:22px}.panel{border:1px solid #d9e3ee;background:white;padding:24px;border-radius:18px;min-width:0}.input{align-self:start}h2{font-size:22px;margin:0 0 16px;overflow-wrap:anywhere}h3{font-size:17px;margin:0 0 8px;overflow-wrap:anywhere}label{font-size:14px;font-weight:650;display:block;margin:13px 0 6px}input,textarea{width:100%;font:inherit;padding:10px;border:1px solid #aebfd4;border-radius:8px;color:inherit;background:#fcfdff}textarea{height:120px;line-height:1.65;font-size:13px;resize:vertical}#lines{height:176px}.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tri label{margin:13px 0 6px;font-size:12px}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}button{font:inherit;font-size:14px;padding:9px 12px;border:1px solid #bac9dc;border-radius:8px;background:#eff4fb;color:#254d87;cursor:pointer;max-width:100%;white-space:normal}button.primary{background:#2d5f96;color:white;border-color:#2d5f96}button:disabled{opacity:.4;cursor:not-allowed}.hint{font-size:13px;line-height:1.75;color:#61738a}.input>.hint{margin-top:12px}.notice{background:#fff3dc;color:#725025;padding:12px;border-radius:9px;font-size:13px;line-height:1.75}.notice.cool{background:#e8f2ee;color:#2a5b49}.metric{font-size:30px;font-weight:750;margin:14px 0 6px;font-variant-numeric:tabular-nums;line-height:1.4;overflow-wrap:anywhere}.metric small{font-size:15px;font-weight:600;color:#5a6d84}.stats{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0}.stats strong{display:block;font-size:24px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.stats span{font-size:12px;color:#6a7c92}.bad{color:#a23b28}.good{color:#2b6b4f}.tag{display:inline-block;font-size:12px;padding:3px 9px;border-radius:20px;background:#e8eef7;color:#3b5b86;margin-left:6px;vertical-align:middle}.tag.bad{background:#fbe4de;color:#a23b28}.tag.good{background:#dff0e7;color:#2b6b4f}.words{font-size:14px;line-height:2;overflow-wrap:anywhere}.word{display:inline-block;background:#2d5f96;color:white;padding:3px 10px;border-radius:7px;margin:0 6px 5px 0;font-variant-numeric:tabular-nums}.word.alt{background:#8395ab}table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}th,td{text-align:left;padding:8px 6px;border-bottom:1px solid #e4eaf1;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;vertical-align:top}th{font-size:12px;color:#62748c;font-weight:650}.scroll{overflow-x:auto}.bar{display:flex;height:24px;border:1px solid #d6e0ec;border-radius:5px;overflow:hidden;margin:12px 0 4px}.bar i{display:block;height:100%}.bar .known{background:#6aa58a}.bar .unknown{background:#d98a70}.legend{font-size:12px;color:#61738a;line-height:1.7}.card{border-left:3px solid #6e90bd;margin:18px 0 0 8px;padding-left:18px}.card p{margin:5px 0;font-size:13px;line-height:1.75;overflow-wrap:anywhere}.card .num{font-variant-numeric:tabular-nums}.line{font-size:13px;line-height:1.75;overflow-wrap:anywhere;background:#f7fafd;padding:8px 10px;border-radius:8px;margin:6px 0}#message{font-size:13px;min-height:22px;color:#526b87;overflow-wrap:anywhere}#error{color:#a34024;font-weight:650;min-height:22px;overflow-wrap:anywhere}#imports{display:none}.model{margin-top:24px;border-top:1px solid #dae3ee;padding-top:18px}.model p{line-height:1.8;font-size:14px}summary{cursor:pointer;font-weight:650}footer{padding-top:0;color:#718095;font-size:12px;line-height:1.8}@media(max-width:780px){header,main,footer{padding:18px}h1{font-size:32px}main{grid-template-columns:1fr}.panel{padding:18px}.metric{font-size:25px}.tri{grid-template-columns:1fr 1fr 1fr}.stats{gap:14px}.stats strong{font-size:21px}.scroll{overflow-x:visible}table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}table.stack thead{display:none}table.stack tr{border:1px solid #e0e8f0;border-radius:10px;padding:10px;margin:10px 0}table.stack td{border:0;padding:3px 0;font-size:13px;overflow-wrap:anywhere}table.stack td:before{content:attr(data-label) '：';color:#6a7c92;font-size:12px}}
+</style><header><div class="eyebrow">LEXICAL COVER · 台词词次覆盖对账</div><h1>这一段台词，最少再学几个词？</h1><p>填一份「已经认识的词」和一段台词，逐句算出认识多少词、能听懂几句，再穷举全部补词组合，给出达到目标所需的<strong>精确最少词集</strong>。只做文本对账，不查词典、不预测真实听力。</p></header><main>
+<section class="panel input"><h2>先填一张对账单</h2>
+<div class="tri"><div><label for="q">每句生词上限 %</label><input id="q" value="37" inputmode="numeric"></div><div><label for="g">目标听懂句占比 %</label><input id="g" value="100" inputmode="numeric"></div><div><label for="k">学习预算 / 个词</label><input id="k" value="3" inputmode="numeric"></div></div>
+<label for="vocab">已认识词表（逗号或空格分隔）</label><textarea id="vocab" spellcheck="false"></textarea>
+<label for="lines">台词文本（每行一句，空行忽略）</label><textarea id="lines" spellcheck="false"></textarea>
+<div class="hint">只统计拉丁字母词，统一小写，标点/数字/中文不参与；词表最多 200 项，台词最多 12 行、每行 200 字符、总词次 400、不同生词种类 ≤ 14（用于精确枚举）。所有数据均为用户自填的虚构示例。</div>
+<div class="buttons"><button id="demo">载入虚构示例</button><button id="tight">生词上限改为 30%</button><button id="zerobudget">预算改为 0</button></div>
+<div class="buttons"><button id="save" class="primary">保存到本机</button><button id="restore">恢复已保存</button><button id="backup">下载备份</button><button id="import">导入备份</button></div><input id="imports" type="file" accept=".json"><div id="message" role="status"></div></section>
+<section class="panel"><div id="error" role="alert"></div><div id="result" aria-live="polite"></div>
+<div class="buttons"><button id="csv">导出明细 CSV</button><button id="md">导出说明</button><button id="png" class="primary">下载结果卡</button></div>
+<details class="model"><summary>算法与使用边界</summary>
+<p>token 是极大连续拉丁字母串（可含中间撇号），统一小写；数字、标点、中文、连字符拆开后不参与统计。一句「能听懂」当且仅当 <strong>生词词次 × 100 ≤ 每句生词上限 × 本句总词次</strong>；目标达成当且仅当 <strong>能听懂句数 × 100 ≥ 目标占比 × 总句数</strong>，两处均为整数比较，无浮点误差。</p>
+<p>不同生词种类 U ≤ 14，因此枚举全部 2<sup>U</sup> 个补词子集即可求<strong>精确最优</strong>：先取子集元素个数最少，再取能听懂句数最多、词次增益最大、词名字典序最小。贪心（每步选单步增量最大）单独列出作对照，遇到无词能提升时明确标注平台期，不把它冒充最优解。</p>
+<p>只做用户自填文本的词次对账：不查词典、不判词义、不处理词形变化/时态/复数/同根词、不处理中文分词、不评估语法难度、语速、连读、口音或背景知识、不预测真实听力或词汇量、不背书任何剧集或语言学习结论。「能听懂」只是上述模型口径下的标记。</p>
+<p>全部计算在本机浏览器完成，不上传输入，不读取音频/视频/字幕文件。主动保存后刷新恢复；JSON 备份可另存与导入。修改任意输入立即重算，采用精确补词会把这组词追加进已认识词表。</p>
+</details></section></main><footer>词面覆盖台 · V1.0.0 · 默认数据、封面与导出数字均为虚构示例，来自同一次计算结果 · AI 辅助开发 · 不提供语言能力评估或学习结论</footer>
+<script>(function(root){'use strict';
+// 词面覆盖台：拉丁 token 逐句生词对账 + 2^U 精确最小补词集
+var TOKEN_RE=/[A-Za-z]+(?:'[A-Za-z]+)?/g;
+function int(v,label,min,max){var s=String(v).trim();if(!/^-?\d+$/.test(s))throw Error(label+'须为整数');var n=Number(s);if(!Number.isSafeInteger(n)||n<min||n>max)throw Error(label+'须为 '+min+'–'+max+' 的整数');return n;}
+function tokenize(line){return (String(line).match(TOKEN_RE)||[]).map(function(t){return t.toLowerCase();});}
+function parseVocab(text){
+  var parts=String(text).trim().split(/[,，\s]+/).filter(function(x){return x.length>0;});
+  if(!parts.length)throw Error('已认识词表不能为空');
+  if(parts.length>200)throw Error('已认识词表最多 200 项');
+  var set={};
+  parts.forEach(function(w,i){if(!/^[A-Za-z]+(?:'[A-Za-z]+)?$/.test(w)||w.length>24)throw Error('词表第 '+(i+1)+' 项须为 1–24 个拉丁字母（可含中间撇号）');set[w.toLowerCase()]=true;});
+  return {set:set,list:Object.keys(set).sort(),count:Object.keys(set).length};
+}
+function compareWords(a,b){return a.join('|')<b.join('|')?-1:a.join('|')>b.join('|')?1:0;}
+function better(a,b){ // a 是否优于 b
+  if(!b)return true;
+  if(a.size!==b.size)return a.size<b.size;
+  if(a.passCount!==b.passCount)return a.passCount>b.passCount;
+  if(a.gain!==b.gain)return a.gain>b.gain;
+  return compareWords(a.words,b.words)<0;
+}
+function betterBudget(a,b){
+  if(!b)return true;
+  if(a.passCount!==b.passCount)return a.passCount>b.passCount;
+  if(a.size!==b.size)return a.size<b.size;
+  if(a.gain!==b.gain)return a.gain>b.gain;
+  return compareWords(a.words,b.words)<0;
+}
+function solve(x){
+  var q=int(x.q,'每句生词上限',0,100),g=int(x.g,'目标听懂句占比',0,100),k=int(x.k,'学习预算',0,14);
+  var vocab=parseVocab(x.vocab);
+  var lines=String(x.lines).replace(/\r/g,'').split('\n').filter(function(l){return l.trim().length>0;});
+  if(!lines.length)throw Error('台词文本不能为空');
+  if(lines.length>12)throw Error('台词文本最多 12 行（空行忽略）');
+  lines.forEach(function(l,i){if([...l].length>200)throw Error('第 '+(i+1)+' 行超过 200 字符');});
+  var sentences=[],totalTokens=0,allTokens={},unknownTypes={};
+  lines.forEach(function(line,i){
+    var toks=tokenize(line);
+    if(toks.length>400)throw Error('第 '+(i+1)+' 行词次超过 400');
+    var unknown=0,local={};
+    toks.forEach(function(t){allTokens[t]=(allTokens[t]||0)+1;if(!vocab.set[t]){unknown++;unknownTypes[t]=(unknownTypes[t]||0)+1;local[t]=true;}});
+    totalTokens+=toks.length;
+    sentences.push({index:i+1,text:line.trim(),n:toks.length,unknown:unknown,unknownWords:Object.keys(local).sort(),
+      pct:0,pass:false,tokens:toks});
+    if(unknown*100<=q*toks.length)sentences[sentences.length-1].pass=true;
+    sentences[sentences.length-1].pct=toks.length?unknown/toks.length*100:0;
+  });
+  if(totalTokens===0)throw Error('台词文本中没有可统计的拉丁字母词次');
+  if(totalTokens>400)throw Error('总词次超过 400');
+  var words=Object.keys(unknownTypes).sort();
+  if(words.length>14)throw Error('不同生词种类 '+words.length+' 个，超过 14 个上限（精确枚举不可用）');
+  var M=sentences.length,U=words.length;
+  var knownTokens=totalTokens-Object.values(unknownTypes).reduce(function(a,b){return a+b;},0);
+  var knownTypes=Object.keys(allTokens).filter(function(t){return vocab.set[t];}).length;
+  var totalTypes=Object.keys(allTokens).length;
+  var baseline=sentences.filter(function(s){return s.pass;}).length;
+  var targetCount=Math.ceil(g*M/100);
+  // 每词在每句出现次数
+  var counts=words.map(function(w){return sentences.map(function(s){var c=0;s.tokens.forEach(function(t){if(t===w)c++;});return c;});});
+  var gains=words.map(function(w){return unknownTypes[w];});
+  function evalSet(mask){
+    var passCount=0,gain=0,chosen=[];
+    for(var b=0;b<U;b++)if(mask&(1<<b)){gain+=gains[b];chosen.push(words[b]);}
+    for(var i=0;i<M;i++){
+      var u=sentences[i].unknown;
+      for(var b=0;b<U;b++)if(mask&(1<<b))u-=counts[b][i];
+      if(u*100<=q*sentences[i].n)passCount++;
+    }
+    return {mask:mask,words:chosen,size:chosen.length,gain:gain,passCount:passCount};
+  }
+  var exact=null,budget=null,total=1<<U;
+  for(var mask=0;mask<total;mask++){
+    var e=evalSet(mask);
+    if(e.passCount>=targetCount&&better(e,exact))exact=e;
+    if(e.size<=k&&betterBudget(e,budget))budget=e;
+  }
+  var budgetReached=budget&&budget.passCount>=targetCount;
+  // 贪心：每步选单步增量最大者；无提升则停止并记平台期
+  var greedyMask=0,greedyWords=[],greedySteps=[],stuck=false;
+  var cur=evalSet(0);
+  while(greedyWords.length<U&&cur.passCount<targetCount){
+    var bestStep=null;
+    for(var b=0;b<U;b++)if(!(greedyMask&(1<<b))){
+      var nx=evalSet(greedyMask|(1<<b));
+      var cand={b:b,w:words[b],delta:nx.passCount-cur.passCount,gain:gains[b]};
+      if(!bestStep||cand.delta>bestStep.delta||(cand.delta===bestStep.delta&&(cand.gain>bestStep.gain||(cand.gain===bestStep.gain&&cand.w<bestStep.w))))bestStep=cand;
+    }
+    if(!bestStep||bestStep.delta<=0){stuck=true;break;}
+    greedyMask|=1<<bestStep.b;greedyWords.push(bestStep.w);
+    greedySteps.push({word:bestStep.w,delta:bestStep.delta,passCount:evalSet(greedyMask).passCount});
+    cur=evalSet(greedyMask);
+  }
+  var greedy=evalSet(greedyMask);
+  // 频次 top-k 反事实
+  var topMask=0;
+  words.map(function(w,i){return {w:w,i:i,f:gains[i]};}).sort(function(a,b){return b.f-a.f||a.w.localeCompare(b.w);}).slice(0,k).forEach(function(o){topMask|=1<<o.i;});
+  var topK=evalSet(topMask);
+  // 单词边际
+  var marginal=words.map(function(w,b){
+    var e=evalSet(1<<b);
+    var affects=[];for(var i=0;i<M;i++)if(counts[b][i]>0)affects.push(i+1);
+    return {word:w,freq:gains[b],soloDelta:e.passCount-baseline,sentences:affects};
+  });
+  // 精确方案后覆盖
+  var afterKnown=knownTokens+(exact?exact.gain:0);
+  return {
+    q:q,g:g,k:k,vocab:vocab,lines:lines,sentences:sentences,M:M,U:U,words:words,
+    totalTokens:totalTokens,knownTokens:knownTokens,totalTypes:totalTypes,knownTypes:knownTypes,
+    tokenCover:knownTokens/totalTokens*100,typeCover:totalTypes?knownTypes/totalTypes*100:0,
+    baseline:baseline,baselinePct:baseline/M*100,targetCount:targetCount,
+    exact:exact,budget:budget,budgetReached:budgetReached,greedy:greedy,greedyWords:greedyWords,greedySteps:greedySteps,stuck:stuck,
+    topK:topK,marginal:marginal,afterKnown:afterKnown,afterCover:afterKnown/totalTokens*100,
+    subsets:total
+  };
+}
+var api={solve,tokenize,parseVocab,int};
+if(typeof module!=='undefined')module.exports=api;else root.AppCore=api;
+})(typeof window!=='undefined'?window:this);
+</script><script>const $=id=>document.getElementById(id),key='lexical-cover-v1';
+const VOCAB='we,i,you,the,a,an,at,on,in,to,and,or,so,then,is,are,was,do,not,my,one,after,by,of,it,for,with,take,walk,wait,go,come,here,there,this,that,can,will,have,has,be,up,out,from,when,if,as,but,left,late,share,leave,old,open,close,light,last,first,now,two,again,back,home,door,street,hand,time,day,night,good,well,just,still,over,under,down,dark';
+const LINES=[
+ 'We wait at the old north gate and watch the dawn train come in.',
+ 'The dawn train is late, so we share one loaf by the north pier.',
+ 'I left my coat on the dawn train, near the quiet north pier.',
+ 'Do not wait after dusk; the north gate is locked and the pier is dark.',
+ 'We lock the old gate, then walk back to the north pier before dawn.',
+ 'Share the last loaf, and leave the north gate open for the late train.'
+].join('\n');
+const demo={q:'37',g:'100',k:'3',vocab:VOCAB,lines:LINES};
+let current=null;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=n=>(Math.round(n*10)/10).toFixed(1).replace(/\.0$/,'');
+const num=n=>n.toLocaleString('zh-CN');
+const input=()=>({q:$('q').value,g:$('g').value,k:$('k').value,vocab:$('vocab').value,lines:$('lines').value});
+function set(v){for(const id of ['q','g','k','vocab','lines'])$(id).value=v[id]??'';render()}
+function render(){current=null;$('error').textContent='';
+  try{const r=AppCore.solve(input());current=r;
+    const ex=r.exact,bu=r.budget,tk=r.topK,gr=r.greedy;
+    const reached=r.baseline>=r.targetCount;
+    const cw=ex?ex.words.map(w=>`<span class="word">${esc(w)}</span>`).join(''):'<span class="bad">无解</span>';
+    $('result').innerHTML=`<div class="eyebrow">当前输入下的对账结论</div>
+      <div class="metric ${reached?'good':(r.budgetReached?'good':'bad')}">${reached?'当前已达到目标':(r.budgetReached?'预算内可以达标':'预算内无法达标')} <small>· 最少再学 ${ex?ex.size:'—'} 个词</small></div>
+      <div class="hint">每句生词上限 ${r.q}% · 目标听懂句占比 ${r.g}%（需 ${r.targetCount}/${r.M} 句）· 学习预算 ${r.k} 个词 · 已枚举 ${num(r.subsets)} 个补词组合</div>
+      <div class="stats"><div><strong>${pct(r.tokenCover)}%</strong><span>词次覆盖率 ${num(r.knownTokens)}/${num(r.totalTokens)}</span></div><div><strong>${r.baseline} / ${r.M}</strong><span>当前能听懂句数（${pct(r.baselinePct)}%）</span></div><div><strong>${r.U}</strong><span>不同生词种类</span></div><div><strong>${ex?ex.size:'—'} / ${r.k}</strong><span>最少需学 / 预算</span></div></div>
+      <div class="bar" aria-label="词次覆盖：绿色为已认识词次，橙色为生词词次"><i class="known" style="width:${(r.tokenCover).toFixed(3)}%"></i><i class="unknown" style="width:${(100-r.tokenCover).toFixed(3)}%"></i></div><div class="legend">绿=已认识词次 ${num(r.knownTokens)}，橙=生词词次 ${num(r.totalTokens-r.knownTokens)}；按词次而非种类统计，重复出现重复计数。种类覆盖率 ${pct(r.typeCover)}%（${r.knownTypes}/${r.totalTypes} 种）。</div>
+      <h2 style="margin-top:26px">达到目标的精确最少词集</h2>
+      <div class="notice ${r.budgetReached?'cool':''}">${ex?`枚举全部 ${num(r.subsets)} 个子集后，最少学 <strong>${ex.size}</strong> 个词即可听懂 ${ex.passCount}/${r.M} 句（目标 ${r.targetCount} 句）；这组词共覆盖 ${ex.gain} 个生词词次，学完后词次覆盖率由 ${pct(r.tokenCover)}% 升到 ${pct(r.afterCover)}%。${r.budgetReached?'预算 '+r.k+' 个词够用。':'预算 '+r.k+' 个词不够，最少需要 '+ex.size+' 个。'}`:'无满足条件的补词组合。'}</div>
+      <div class="words">${cw}</div>
+      ${ex&&ex.size>0?`<div class="buttons"><button id="apply" class="primary">采用精确补词并重算</button></div>`:''}
+      <h2 style="margin-top:26px">四条路线的对照</h2>
+      <div class="scroll"><table class="stack"><thead><tr><th>路线</th><th>选词</th><th>用几个词</th><th>能听懂句数</th><th>结论</th></tr></thead><tbody>
+        <tr><td data-label="路线">精确最优（全枚举）</td><td data-label="选词">${ex?esc(ex.words.join('、')):'—'}</td><td data-label="用几个词">${ex?ex.size:'—'}</td><td data-label="能听懂句数">${ex?ex.passCount:'—'} / ${r.M}</td><td data-label="结论">${r.budgetReached?'达标':'未达标'}</td></tr>
+        <tr><td data-label="路线">预算 ${r.k} 词内最优</td><td data-label="选词">${bu?esc(bu.words.join('、')):'—'}</td><td data-label="用几个词">${bu?bu.size:'—'}</td><td data-label="能听懂句数">${bu?bu.passCount:'—'} / ${r.M}</td><td data-label="结论">${r.budgetReached?'达标':'未达标'}</td></tr>
+        <tr><td data-label="路线">只按出现频次选前 ${r.k}</td><td data-label="选词">${esc(tk.words.join('、'))||'（空）'}</td><td data-label="用几个词">${tk.size}</td><td data-label="能听懂句数">${tk.passCount} / ${r.M}</td><td data-label="结论" class="${tk.passCount>=r.targetCount?'good':'bad'}">${tk.passCount>=r.targetCount?'达标':'未达标'}</td></tr>
+        <tr><td data-label="路线">贪心逐步选</td><td data-label="选词">${esc(r.greedyWords.join('、'))||'（空）'}</td><td data-label="用几个词">${r.greedyWords.length}</td><td data-label="能听懂句数">${gr.passCount} / ${r.M}</td><td data-label="结论" class="${r.stuck?'bad':''}">${r.stuck?'平台期：再无单词能提升':'达标'}</td></tr>
+      </tbody></table></div>
+      <div class="notice">${r.stuck?'贪心先选了「'+esc(r.greedyWords.join('、')||'无')+'」后停在第 '+gr.passCount+' 句，单个新词都推不动剩下的句子；但 '+(ex?ex.size:0)+' 个词一起学就能到 '+(ex?ex.passCount:0)+' 句。这正是「按频次背」与「按目标精确选」的差别，不是语言学习结论，只是本模型下的集合覆盖性质。':'本例贪心可以走到目标；精确解仍由全枚举保证最小词数。'}</div>
+      <h2 style="margin-top:26px">逐句对账</h2>
+      <div class="scroll"><table class="stack"><thead><tr><th>句</th><th>总词次</th><th>生词词次</th><th>生词占比</th><th>判定（上限 ${r.q}%）</th><th>本句生词</th></tr></thead><tbody>${r.sentences.map(s=>`<tr><td data-label="句">第 ${s.index} 句</td><td data-label="总词次">${s.n}</td><td data-label="生词词次">${s.unknown}</td><td data-label="生词占比">${pct(s.pct)}%</td><td data-label="判定" class="${s.pass?'good':'bad'}">${s.pass?'能听懂':'未达标'}</td><td data-label="本句生词">${s.unknownWords.length?esc(s.unknownWords.join('、')):'—'}</td></tr>`).join('')}</tbody></table></div>
+      <div class="line"><strong>台词全文（虚构示例）：</strong></div>${r.sentences.map(s=>`<div class="line">${s.index}. ${esc(s.text)}</div>`).join('')}
+      <h2 style="margin-top:26px">生词边际表</h2>
+      <div class="hint">「单独学它」= 只把这一个词加进已认识词表后，能听懂句数的增量。这一列不能相加：多个词的作用会重叠，所以才需要全枚举。</div>
+      <div class="scroll"><table class="stack"><thead><tr><th>生词</th><th>出现次数</th><th>单独学它的增量</th><th>涉及句</th></tr></thead><tbody>${r.marginal.map(m=>`<tr><td data-label="生词">${esc(m.word)}</td><td data-label="出现次数">${m.freq}</td><td data-label="单独学它的增量">+${m.soloDelta}</td><td data-label="涉及句">${m.sentences.join('、')}</td></tr>`).join('')}</tbody></table></div>`;
+    const ap=$('apply');if(ap)ap.onclick=()=>{const e=r.exact;if(!e||!e.words.length)return;const cur=$('vocab').value.trim().split(/[,，\s]+/).filter(Boolean);const merged=cur.concat(e.words).join(',');$('vocab').value=merged;$('message').textContent='已把 '+e.words.join('、')+' 追加进已认识词表，结果已重算。';render()};
+  }catch(e){$('result').innerHTML='';$('error').textContent=e.message}
+  for(const id of ['save','backup','md','png','csv'])$(id).disabled=!current;
+}
+for(const id of ['q','g','k','vocab','lines'])$(id).addEventListener('input',render);
+$('demo').onclick=()=>{set(demo);$('message').textContent='已载入虚构示例。'};
+$('tight').onclick=()=>{$('q').value='30';render();$('message').textContent='每句生词上限改为 30%：更多句子未达标，所需最少词集随之变化。'};
+$('zerobudget').onclick=()=>{$('k').value='0';render();$('message').textContent='预算改为 0：预算内无法达标，但精确最少词集仍给出所需词数。'};
+$('save').onclick=()=>{try{localStorage.setItem(key,JSON.stringify(input()));$('message').textContent='已保存；刷新将恢复此版本。'}catch(e){$('message').textContent='保存失败，请下载备份。'}};
+function restore(){try{const s=localStorage.getItem(key);if(!s){$('message').textContent='尚无本机保存';return}const v=JSON.parse(s);AppCore.solve(v);set(v);$('message').textContent='已恢复本机保存'}catch(e){$('message').textContent='保存内容无法读取：'+e.message}}
+$('restore').onclick=restore;
+function dl(name,data,type){const b=data instanceof Blob?data:new Blob([data],{type}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);$('message').textContent='已请求下载：'+name}
+$('backup').onclick=()=>dl('词面覆盖-备份.json',JSON.stringify({version:1,input:input()},null,2),'application/json');
+$('import').onclick=()=>$('imports').click();
+$('imports').onchange=async e=>{try{const file=e.target.files[0];if(!file)return;if(file.size>100000)throw Error('备份超过100KB');const v=JSON.parse(await file.text());if(v.version!==1||!v.input)throw Error('备份格式不正确');AppCore.solve(v.input);set(v.input);$('message').textContent='已导入备份，未覆盖本机保存'}catch(err){$('message').textContent='导入失败：'+err.message}finally{$('imports').value=''}};
+const cell=x=>'"'+String(x).replace(/^([=+@-])/,"'$1").replace(/"/g,'""')+'"';
+$('csv').onclick=()=>{const r=current,rows=[['类型','句/词','总词次','生词词次','生词占比%','判定','涉及词','出现次数','能听懂句数','所用词数'],
+ ...r.sentences.map(s=>['句子',s.index,s.n,s.unknown,pct(s.pct),s.pass?'能听懂':'未达标',s.unknownWords.join(' / '),'','','']),
+ ...r.marginal.map(m=>['生词',m.word,'','','','','',m.freq,m.soloDelta,'']),
+ ['路线','精确最优','','','','达标','',(r.exact||{}).gain,(r.exact||{}).passCount,(r.exact||{}).size],
+ ['路线','预算内最优','','','',r.budgetReached?'达标':'未达标','',(r.budget||{}).gain,(r.budget||{}).passCount,(r.budget||{}).size],
+ ['路线','频次前'+r.k,'','','',r.topK.passCount>=r.targetCount?'达标':'未达标',r.topK.words.join(' / '),r.topK.gain,r.topK.passCount,r.topK.size],
+ ['路线','贪心','','','',r.stuck?'平台期':'达标',r.greedyWords.join(' / '),r.greedy.gain,r.greedy.passCount,r.greedyWords.length]];
+ dl('词面覆盖-明细.csv','\ufeff'+rows.map(row=>row.map(cell).join(',')).join('\r\n'),'text/csv;charset=utf-8')};
+function report(){const r=current,ex=r.exact;return '# 词面覆盖台 · 对账说明\n\n每句生词上限 '+r.q+'%，目标听懂句占比 '+r.g+'%（需 '+r.targetCount+'/'+r.M+' 句），学习预算 '+r.k+' 个词。\n\n'+
+ '词次覆盖率 '+pct(r.tokenCover)+'%（'+r.knownTokens+'/'+r.totalTokens+' 词次），种类覆盖率 '+pct(r.typeCover)+'%（'+r.knownTypes+'/'+r.totalTypes+' 种）；当前能听懂 '+r.baseline+'/'+r.M+' 句。不同生词 '+r.U+' 种，共枚举 '+r.subsets+' 个补词组合。\n\n'+
+ '## 结论\n'+(ex?'达到目标最少再学 '+ex.size+' 个词：'+ex.words.join('、')+'。学会后能听懂 '+ex.passCount+'/'+r.M+' 句，词次覆盖率升至 '+pct(r.afterCover)+'%。'+(r.budgetReached?'预算 '+r.k+' 个词够用。':'预算 '+r.k+' 个词不足。'):'无满足条件的补词组合。')+'\n\n'+
+ '## 逐句\n'+r.sentences.map(s=>'- 第 '+s.index+' 句：'+s.n+' 词次，生词 '+s.unknown+'（'+pct(s.pct)+'%），'+(s.pass?'能听懂':'未达标')+'；生词 '+(s.unknownWords.join('、')||'无')+'。原文：'+s.text).join('\n')+'\n\n'+
+ '## 生词边际（单独学会该词的句数增量，不可相加）\n'+r.marginal.map(m=>'- '+m.word+'：出现 '+m.freq+' 次，单独学 +'+m.soloDelta+' 句，涉及第 '+m.sentences.join('、')+' 句').join('\n')+'\n\n'+
+ '## 四条路线\n- 精确最优：'+(ex?ex.words.join('、')+'，'+ex.size+' 词，'+ex.passCount+'/'+r.M+' 句':'无解')+'\n- 预算内最优：'+(r.budget?r.budget.words.join('、')+'，'+r.budget.size+' 词，'+r.budget.passCount+'/'+r.M+' 句':'无')+'\n- 频次前 '+r.k+'：'+(r.topK.words.join('、')||'空')+'，'+r.topK.passCount+'/'+r.M+' 句\n- 贪心：'+(r.greedyWords.join('、')||'空')+'，'+r.greedy.passCount+'/'+r.M+' 句'+(r.stuck?'，遇平台期（再无单词能提升）':'')+'\n\n'+
+ '模型：仅统计拉丁字母 token，统一小写，不查词典、不处理词形变化。一句能听懂当且仅当 生词词次×100 ≤ '+r.q+'×本句总词次；目标达成当且仅当 能听懂句数×100 ≥ '+r.g+'×总句数。精确解由 2^'+r.U+' 全子集枚举得到，不是贪心近似。默认数据为虚构示例；不预测真实听力或词汇量，不提供语言学习结论。计算在本机完成，未上传输入。';}
+$('md').onclick=()=>dl('词面覆盖-说明.md',report(),'text/markdown;charset=utf-8');
+$('png').onclick=()=>{const r=current,ex=r.exact,c=document.createElement('canvas');c.width=1080;c.height=1350;const g=c.getContext('2d');
+ g.fillStyle='#f1f5fa';g.fillRect(0,0,1080,1350);g.fillStyle='#22344e';g.font='bold 52px sans-serif';g.fillText('词面覆盖台',60,100);
+ g.font='25px sans-serif';g.fillStyle='#5a6d84';g.fillText('每句生词上限 '+r.q+'% · 目标 '+r.g+'% · 预算 '+r.k+' 词',60,152);
+ g.font='bold 40px sans-serif';g.fillStyle=r.budgetReached?'#2b6b4f':'#a23b28';g.fillText(r.baseline>=r.targetCount?'当前已达到目标':(r.budgetReached?'预算内可以达标':'预算内无法达标'),60,222);
+ g.font='bold 34px sans-serif';g.fillStyle='#22344e';g.fillText('最少再学 '+(ex?ex.size:'—')+' 个词',60,278);
+ g.font='24px sans-serif';g.fillStyle='#5a6d84';g.fillText('词次覆盖 '+pct(r.tokenCover)+'% · 当前能听懂 '+r.baseline+'/'+r.M+' 句 · 生词 '+r.U+' 种',60,325);
+ // 覆盖条
+ const bw=940,bx=60,by=355;g.fillStyle='#ffffff';g.fillRect(bx,by,bw,30);g.fillStyle='#6aa58a';g.fillRect(bx,by,bw*r.tokenCover/100,30);g.fillStyle='#d98a70';g.fillRect(bx+bw*r.tokenCover/100,by,bw*(100-r.tokenCover)/100,30);g.strokeStyle='#c9d7e6';g.lineWidth=2;g.strokeRect(bx,by,bw,30);
+ g.font='20px sans-serif';g.fillStyle='#61738a';g.fillText('绿=已认识 '+r.knownTokens+' 词次 · 橙=生词 '+(r.totalTokens-r.knownTokens)+' 词次',60,by+58);
+ // 精确词集
+ let y=by+110;g.fillStyle='#22344e';g.font='bold 28px sans-serif';g.fillText('达到目标的精确最少词集',60,y);
+ let wx=60;const wy=y+20;
+ if(ex&&ex.words.length){ex.words.forEach(w=>{g.font='bold 26px sans-serif';const tw=g.measureText(w).width+28;if(wx+tw>1020){wx=60;g.fillText('',0,0)}g.fillStyle='#2d5f96';g.fillRect(wx,wy,tw,44);g.fillStyle='#ffffff';g.fillText(w,wx+14,wy+31);wx+=tw+12});}else{g.font='24px sans-serif';g.fillStyle='#a23b28';g.fillText('无解',60,wy+31)}
+ const cy=wy+80;g.font='22px sans-serif';g.fillStyle='#22344e';g.fillText('枚举 '+num(r.subsets)+' 个组合 · 学会后能听懂 '+(ex?ex.passCount:'—')+'/'+r.M+' 句 · 覆盖率升至 '+pct(r.afterCover)+'%',60,cy);
+ // 路线对照
+ let ry=cy+55;g.fillStyle='#22344e';g.font='bold 28px sans-serif';g.fillText('四条路线对照',60,ry);g.font='22px sans-serif';
+ const routes=[['精确最优',ex?ex.size+' 词 / '+ex.passCount+' 句':'-',r.budgetReached],['预算内最优',r.budget?r.budget.size+' 词 / '+r.budget.passCount+' 句':'-',r.budgetReached],['频次前 '+r.k,r.topK.size+' 词 / '+r.topK.passCount+' 句',r.topK.passCount>=r.targetCount],['贪心'+(r.stuck?'（平台期）':''),r.greedyWords.length+' 词 / '+r.greedy.passCount+' 句',r.greedy.passCount>=r.targetCount]];
+ routes.forEach((o,i)=>{const yy=ry+42+i*44;g.fillStyle=o[2]?'#2b6b4f':'#a23b28';g.fillText((o[2]?'● ':'○ ')+o[0]+'：'+o[1],60,yy)});
+ // 逐句
+ let sy=ry+42+routes.length*44+34;g.fillStyle='#22344e';g.font='bold 28px sans-serif';g.fillText('逐句对账',60,sy);g.font='21px sans-serif';
+ r.sentences.forEach((s,i)=>{const yy=sy+40+i*38;g.fillStyle=s.pass?'#2b6b4f':'#a23b28';g.fillText((s.pass?'✓ ':'✗ ')+'第 '+s.index+' 句：'+s.n+' 词次 / 生词 '+s.unknown+'（'+pct(s.pct)+'%）',60,yy)});
+ g.fillStyle='#63738a';g.font='19px sans-serif';g.fillText('仅统计拉丁字母词次，不查词典、不预测真实听力；「能听懂」是模型标记。',60,1290);g.fillText('默认数据为虚构示例；计算在本机完成，未上传输入。V1.0.0',60,1320);
+ c.toBlob(b=>{if(b)dl('词面覆盖-结果卡.png',b,'image/png')})};
+set(demo);restore();
+</script></html>

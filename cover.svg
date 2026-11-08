@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+<rect width="1200" height="1200" fill="#eef3f8"/>
+<rect x="70" y="70" width="1060" height="1060" rx="44" fill="#ffffff" stroke="#d9e3ee" stroke-width="3"/>
+<text x="120" y="180" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="26" letter-spacing="6" fill="#4f6b91" font-weight="700">LEXICAL COVER</text>
+<text x="120" y="290" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="76" font-weight="750" fill="#22344e">词面覆盖台</text>
+<text x="120" y="360" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="34" fill="#5a6d84">这一段台词，最少再学几个词？</text>
+<!-- 词次覆盖条 -->
+<text x="120" y="460" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="26" fill="#61738a">词次覆盖率 61.9% · 当前能听懂 4 / 6 句</text>
+<rect x="120" y="490" width="960" height="52" rx="10" fill="#ffffff" stroke="#c9d7e6" stroke-width="2"/>
+<rect x="120" y="490" width="594" height="52" fill="#6aa58a"/>
+<rect x="714" y="490" width="366" height="52" fill="#d98a70"/>
+<text x="140" y="525" font-family="system-ui,sans-serif" font-size="23" fill="#ffffff">已认识 52 词次</text>
+<text x="734" y="525" font-family="system-ui,sans-serif" font-size="23" fill="#ffffff">生词 32</text>
+<!-- 精确词集 -->
+<text x="120" y="630" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="30" font-weight="700" fill="#22344e">精确最少词集 · 3 个词</text>
+<g font-family="system-ui,sans-serif" font-size="34" font-weight="700" fill="#ffffff">
+<rect x="120" y="660" width="210" height="76" rx="14" fill="#2d5f96"/><text x="150" y="710">dawn</text>
+<rect x="350" y="660" width="230" height="76" rx="14" fill="#2d5f96"/><text x="380" y="710">north</text>
+<rect x="600" y="660" width="180" height="76" rx="14" fill="#2d5f96"/><text x="630" y="710">pier</text>
+</g>
+<text x="810" y="710" font-family="system-ui,sans-serif" font-size="28" fill="#2b6b4f">→ 6 / 6 句</text>
+<!-- 对照 -->
+<text x="120" y="820" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="28" font-weight="700" fill="#22344e">为什么不是按出现次数背？</text>
+<text x="120" y="875" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="26" fill="#a23b28">● 频次前 3：dawn / gate / north → 5 句</text>
+<text x="120" y="925" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="26" fill="#a23b28">● 贪心逐步：north 后卡住 → 5 句</text>
+<text x="120" y="975" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="26" fill="#2b6b4f">● 全枚举精确解：3 词 → 6 句</text>
+<line x1="120" y1="1020" x2="1080" y2="1020" stroke="#dae3ee" stroke-width="2"/>
+<text x="120" y="1075" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="22" fill="#718095">枚举 16,384 个补词组合 · 只做文本词次对账，不查词典</text>
+<text x="120" y="1110" font-family="system-ui,-apple-system,PingFang SC,sans-serif" font-size="21" fill="#718095">默认数据为虚构示例 · 不预测真实听力或词汇量 · V1.0.0</text>
+</svg>
